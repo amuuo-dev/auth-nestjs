@@ -10,7 +10,6 @@ import {
 import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-import { Observable } from 'rxjs';
 import jwtConfig from 'src/iam/config/jwt.config';
 
 @Injectable()
@@ -32,7 +31,6 @@ export class AccessTokenGuard implements CanActivate {
         this.jwtConfiguration,
       );
       request['user'] = payload;
-      console.log(payload);
     } catch {
       throw new UnauthorizedException();
     }
